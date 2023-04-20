@@ -1,8 +1,25 @@
 from loader import load
 
-
+global animes
+global tags
 def recommend(user_animes, user_tags):
-    pass
+    t = []
+    for tag in user_tags:
+        t.append(tags[tag])
+    for a in user_animes:
+        for tag in animes[a].tags:
+            t.append(tags[tag])
+    anime_list = list(animes.keys())
+    anime_list = sorted(anime_list, key=lambda a: get_score(animes[a], t), reverse=True)
+    return anime_list
+    
+
+def get_score(anime, tags):
+    score = 0
+    for t in tags:
+        if t.name in anime.tags:
+            score += t.weight
+    return score
 
 
 if __name__ == "__main__":
@@ -49,7 +66,7 @@ if __name__ == "__main__":
                 else:
                     print("Invalid anime, please input again or type break to stop")
         elif c == "5":
-            pass
+            print(recommend(user_animes, user_tags)[:5])
         elif c == "6":
             user_animes = []
             user_tags = []

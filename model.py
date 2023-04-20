@@ -4,7 +4,7 @@ import json
 class Anime:
     def __init__(self, name, tags=[], score=0):
         self.name = name
-        self.tags = []
+        self.tags = tags
         self.score = score
 
     def add_score(self, score):
