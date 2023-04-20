@@ -34,9 +34,10 @@ class AnimeDecoder(json.JSONDecoder):
 
 
 class Tag:
-    def __init__(self, name, animes=[]):
+    def __init__(self, name, animes=[], weight=1):
         self.name = name
         self.animes = animes
+        self.weight = weight
 
     def add_anime(self, anime_name):
         self.animes.append(anime_name)
@@ -45,9 +46,9 @@ class Tag:
 class TagEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Tag):
-            return {"name": obj.name, "animes": obj.animes}
+            return {"name": obj.name, "animes": obj.animes, "weight": obj.weight}
         elif isinstance(obj, list):
-            return [{"name": item.name, "animes": item.animes} for item in obj]
+            return [{"name": item.name, "animes": item.animes, "weight": item.weight} for item in obj]
         else:
             return json.JSONEncoder.default(self, obj)
 
@@ -56,6 +57,6 @@ class TagDecoder(json.JSONDecoder):
     def decode(self, s):
         result = super().decode(s)
         if isinstance(result, list):
-            return [Tag(name=item['name'], animes=item['animes']) for item in result]
+            return [Tag(name=item['name'], animes=item['animes'], weight=item['weight']) for item in result]
         else:
-            return Tag(name=result['name'], animes=result['animes'])
+            return Tag(name=result['name'], animes=result['animes'], weight=result['weight'])
