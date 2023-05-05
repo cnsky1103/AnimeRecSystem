@@ -10,16 +10,21 @@ This program is a simple anime recommendation system that provides anime recomme
 
 ## Usage
 
-To run the program, simply execute the program file in the terminal with the command `python3 ARS.py`. The program will ask you to input commands to interact with it. The available commands are:
+To run the program, simply execute the program file in the terminal with the command
 
-show all tags available - Prints a list of all the available tags in the dataset.
-show all animes available - Prints a list of all the available animes in the dataset.
-add your preference tag - Adds a tag that you like to your preference list.
-add your preference anime - Adds an anime that you like to your preference list.
-get recommendation - Generates a list of recommended animes based on your preferences.
-clear all tags - Clears all the tags and animes in your preference list.
-quit - Exits the program.
-How it works
+`python3 ARS.py`
+
+The program will ask you to input **numbers** to interact with it. The available commands are:
+
+- 1 show all tags available - Prints a list of all the available tags in the dataset.
+- 2 show all animes available - Prints a list of all the available animes in the dataset.
+- 3 add your preference tag - Adds a tag that you like to your preference list.
+- 4 add your preference anime - Adds an anime that you like to your preference list.
+- 5 get recommendation - Generates a list of recommended animes based on your preferences.
+- 6 clear all tags - Clears all the tags and animes in your preference list.
+- 7 quit - Exits the program.
+
+## How it works
 The program works by calculating a score for each anime based on the tags that the anime and the user's preference list share. The program then sorts the list of animes based on their scores and returns the top recommendations.
 
 The "load()" function in the "loader.py" file is responsible for loading the anime data and tags into the program. The "recommend()" function takes in the user's preference list as arguments and generates a list of recommended animes.
