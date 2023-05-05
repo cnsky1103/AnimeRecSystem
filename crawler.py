@@ -88,7 +88,7 @@ def extractAnimeInfo(url):
 
 
 if __name__ == "__main__":
-    pages = 1
+    pages = 5
     for i in range(pages):
         url = f"https://myanimelist.net/topanime.php?limit={i*50}"
         html = getHTMLText(url)
